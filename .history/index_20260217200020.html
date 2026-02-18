@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campanini Beauty | Clínica Premium</title>
+    <link rel="icon" href="assets/image/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F1D592;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .light-mode {
+            --black: #f4f4f4;
+            --dark-gray: #ffffff;
+            --white: #0a0a0a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .logo img { height: 50px; }
+
+        .theme-switch { cursor: pointer; font-size: 1.5rem; color: var(--gold); }
+
+        /* --- TÍTULO PULSANTE ATUALIZADO --- */
+        .pulsing-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            color: var(--gold);
+            margin: 40px 0;
+            animation: pulse 2.5s infinite;
+            letter-spacing: 2px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); text-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
+            50% { transform: scale(1.05); text-shadow: 0 0 25px var(--gold); }
+            100% { transform: scale(1); text-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
+        }
+
+        /* --- IMAGEM PRINCIPAL CENTRALIZADA E MENOR --- */
+        .hero {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px;
+        }
+
+        .hero img { 
+            max-width: 500px; /* Tamanho reduzido para não ocupar a tela toda */
+            width: 100%; 
+            height: auto; 
+            border-radius: 20px;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        /* --- GRID DE SERVIÇOS --- */
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+        .card {
+            background: var(--dark-gray);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2); 
+        }
+
+        .card img { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: contain;
+             /* Garante que a imagem não fique esticada */
+        }
+
+        /* --- SEÇÃO DE DEPOIMENTOS --- */
+        .testimonials-section {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, var(--black) 0%, #111 100%);
+            text-align: center;
+        }
+
+        .testimonials-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--dark-gray);
+            padding: 30px;
+            border-radius: 20px;
+            width: 300px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+        }
+
+        .testimonial-card img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .testimonial-card h4 { color: var(--gold); margin-bottom: 10px; font-size: 1.1rem; }
+        .testimonial-card p { font-style: italic; font-size: 0.9rem; color: #ccc; line-height: 1.5; }
+
+        .btn-booking {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .btn-booking:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: scale(1.05);
+        }
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; z-index: 1000; text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid var(--gold); background: #000; }
+        .map-container { margin: 30px auto; max-width: 900px; height: 350px; border: 1px solid var(--gold); border-radius: 10px; overflow: hidden; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="assets/image/Logo escrito 'Campan.png" alt="Campanini Beauty">
+        </div>
+        <div class="theme-switch" onclick="toggleTheme()">
+            <i id="theme-icon" class="fas fa-moon"></i>
+        </div>
+    </header>
+
+    <h1 class="pulsing-title">Campanini Beauty</h1>
+
+    <div class="hero">
+        <img src="assets/image/principal.jpg" alt="Destaque Campanini Beauty">
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card">
+                <img src="assets/image/imagem1.jpg" alt="Procedimento">
+                <a href="#" class="btn-booking">Agendar Agora</a>
+            </div>
+            <div class="card">
+                <img src="assets/image/imagem2.jpg" alt="Procedimento">
+                <a href="#" class="btn-booking">Agendar Agora</a>
+            </div>
+            <div class="card">
+                <img src="assets/image/imagem3.jpg" alt="Procedimento">
+                <a href="#" class="btn-booking">Agendar Agora</a>
+            </div>
+                        <div class="card">
+                <img src="assets/image/imagem4.jpg" alt="Procedimento">
+                <a href="#" class="btn-booking">Agendar Agora</a>
+            </div>
+            <div class="card">
+                <img src="assets/image/imagem5.jpg" alt="Procedimento">
+                <a href="#" class="btn-booking">Agendar Agora</a>
+            </div>
+            <div class="card">
+                <img src="assets/image/imagem6.jpg" alt="Procedimento">
+                <a href="#" class="btn-booking">Agendar Agora</a>
+            </div>
+
+        </div>
+    </div>
+
+    <section class="testimonials-section">
+        <h2 style="font-family: 'Playfair Display'; color: var(--gold); font-size: 2.2rem; margin-bottom: 10px;">Experiências Reais</h2>
+        <p style="color: #888;">O que nossas clientes dizem sobre a Campanini Beauty</p>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente">
+                <h4>Juliana Paes</h4>
+                <p>"A melhor clínica de estética que já frequentei. O profissionalismo e o luxo do ambiente são incomparáveis."</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Cliente">
+                <h4>Roberta Magalhães</h4>
+                <p>"Resultados visíveis logo na primeira sessão. A equipe Campanini Beauty é extremamente atenciosa."</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Cliente">
+                <h4>Carla Silveira</h4>
+                <p>"Um verdadeiro refúgio de beleza em SP. Saio daqui renovada todas as semanas!"</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="color: var(--gold); margin-bottom: 10px;">ONDE ESTAMOS</p>
+        <p><strong>Rua soldado João de Oliveira, 421 - Chácara Inglesa, São Paulo</strong></p>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.345!2d-46.638!3d-23.60!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM2JzAwLjAiUyA0NsKwMzgnMTYuOCJX!5e0!3m2!1spt-BR!2sbr!4v1620000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <a href="#" class="insta-icon"><i class="fab fa-instagram"></i></a>
+        <p style="margin-top: 20px; font-size: 0.8rem; color: #555;">© 2026 Campanini Beauty. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/5511999999999" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+    </script>
+</body>
+</html>

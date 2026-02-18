@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campanini Beauty | Transformação e Brilho</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #d4af37; /* Dourado */
+            --dark: #121212;
+            --light: #ffffff;
+            --gray-bg: #f9f9f9;
+            --text-muted: #666;
+            --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark-mode {
+            --light: #121212;
+            --dark: #ffffff;
+            --gray-bg: #1e1e1e;
+            --text-muted: #aaa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: var(--light); color: var(--dark); transition: background var(--transition), color var(--transition); overflow-x: hidden; }
+
+        /* --- Header --- */
+        header {
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--light);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .logo img { height: 50px; transition: transform 0.3s; }
+        .logo img:hover { transform: scale(1.05); }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.4rem;
+            color: var(--primary);
+            background: var(--gray-bg);
+            padding: 10px;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pulsing-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 20px;
+            color: var(--primary);
+            animation: pulse 2.5s infinite ease-in-out;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
+            50% { transform: scale(1.03); text-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+        }
+
+        .main-img {
+            width: 100%;
+            height: clamp(300px, 60vh, 600px);
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        /* --- Services Grid --- */
+        .services-container { padding: 80px 5%; background: var(--gray-bg); }
+        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 50px; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+
+        .service-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 15px; color: var(--primary); }
+        .service-card p { font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 25px; min-height: 80px; }
+
+        /* --- Buttons --- */
+        .btn-ws {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            width: 100%;
+        }
+
+        .btn-ws:hover { background-color: transparent; color: var(--primary); }
+
+        /* --- Testimonials --- */
+        .testimonials { padding: 100px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .testi-card {
+            padding: 40px 20px;
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            position: relative;
+        }
+        .testi-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin-bottom: 15px;
+        }
+        .testi-card i { color: var(--primary); font-size: 1.5rem; margin-bottom: 15px; display: block; }
+        .testi-card p { font-style: italic; font-size: 0.95rem; }
+
+        /* --- Floating WhatsApp --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            z-index: 2000;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-12px);}
+        }
+
+        /* --- Footer --- */
+        footer { background: #0a0a0a; color: #fff; padding: 60px 5% 30px; text-align: center; }
+        .map-container {
+            margin: 40px auto;
+            max-width: 1000px;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+        }
+        .social-links { font-size: 2.5rem; margin-bottom: 30px; }
+        .social-links a { color: var(--primary); transition: 0.3s; }
+        .social-links a:hover { transform: scale(1.2); color: white; }
+
+        /* Responsividade Mobile */
+        @media (max-width: 600px) {
+            header { padding: 10px 20px; }
+            .pulsing-title { font-size: 2.2rem; }
+            .hero { padding: 40px 20px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .whatsapp-float { width: 55px; height: 55px; font-size: 30px; right: 20px; bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Campanini Beauty">
+        </div>
+        <div class="theme-toggle" onclick="toggleTheme()" title="Trocar modo">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 class="pulsing-title">Campanini Beauty</h1>
+        <p style="font-size: 1.2rem; font-weight: 300;">Onde a arte encontra a beleza capilar.</p>
+        <img src="imagem-central.jpg" alt="Destaque Campanini" class="main-img">
+    </section>
+
+    <div class="services-container">
+        <h2 class="section-title">Nossas Especialidades</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="img1.jpg" alt="Mechas">
+                <h3>Mechas & Cor</h3>
+                <p>"Fiquei impressionada com a técnica! Meu loiro nunca teve um tom tão sofisticado. Recebo elogios todos os dias!"</p>
+                <a href="https://wa.me/5511999999999" class="btn-ws">CONSULTA WHATS</a>
+            </div>
+            <div class="service-card">
+                <img src="img2.jpg" alt="Mega Hair">
+                <h3>Mega Hair</h3>
+                <p>"A naturalidade é surreal. O volume que eu sempre sonhei com um acabamento que ninguém percebe que é extensão."</p>
+                <a href="https://wa.me/5511999999999" class="btn-ws">CONSULTA WHATS</a>
+            </div>
+            <div class="service-card">
+                <img src="img3.jpg" alt="Tratamentos">
+                <h3>Tratamentos VIP</h3>
+                <p>"Meu cabelo renasceu! A maciez e o brilho após o cronograma capilar são de outro mundo. Vale cada centavo."</p>
+                <a href="https://wa.me/5511999999999" class="btn-ws">CONSULTA WHATS</a>
+            </div>
+            <div class="service-card">
+                <img src="img4.jpg" alt="Cortes">
+                <h3>Cortes Modernos</h3>
+                <p>"O visagismo mudou minha imagem. Um corte que valoriza meu rosto e é super fácil de arrumar em casa!"</p>
+                <a href="https://wa.me/5511999999999" class="btn-ws">CONSULTA WHATS</a>
+            </div>
+            <div class="service-card">
+                <img src="img5.jpg" alt="Alisamentos">
+                <h3>Liso Supremo</h3>
+                <p>"Finalmente um alisamento que deixa o cabelo com balanço e aspecto saudável. Brilho espelhado maravilhoso!"</p>
+                <a href="https://wa.me/5511999999999" class="btn-ws">CONSULTA WHATS</a>
+            </div>
+            <div class="service-card">
+                <img src="img6.jpg" alt="Escovas">
+                <h3>Escovas & Botox</h3>
+                <p>"A finalização perfeita. Saio do salão me sentindo uma celebridade pronta para qualquer evento!"</p>
+                <a href="https://wa.me/5511999999999" class="btn-ws">CONSULTA WHATS</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="testimonials">
+        <h2 class="section-title">Quem Confia</h2>
+        <div class="testimonial-grid">
+            <div class="testi-card">
+                <img src="https://i.pravatar.cc/150?u=1" alt="Cliente 1" class="testi-img">
+                <i class="fas fa-quote-left"></i>
+                <p>"O melhor salão de São Paulo! O atendimento do Campanini Beauty é impecável e os produtos são de altíssima qualidade."</p>
+                <h4 style="margin-top:15px; color: var(--primary);">Mariana Silva</h4>
+            </div>
+            <div class="testi-card">
+                <img src="https://i.pravatar.cc/150?u=2" alt="Cliente 2" class="testi-img">
+                <i class="fas fa-quote-left"></i>
+                <p>"Fiz minhas mechas e o mega hair. O resultado superou todas as minhas expectativas. Me sinto linda!"</p>
+                <h4 style="margin-top:15px; color: var(--primary);">Juliana Costa</h4>
+            </div>
+            <div class="testi-card">
+                <img src="https://i.pravatar.cc/150?u=3" alt="Cliente 3" class="testi-img">
+                <i class="fas fa-quote-left"></i>
+                <p>"Ambiente luxuoso e profissionais extremamente competentes. É o meu momento favorito da semana."</p>
+                <h4 style="margin-top:15px; color: var(--primary);">Fernanda Lima</h4>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com/campaninibeauty" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p><i class="fas fa-map-marker-alt" style="color:var(--primary)"></i> Rua soldado João Oliveira, 421<br>Bairro Chácara Inglesa, São Paulo</p>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.8828987317785!2d-46.6384288!3d-23.6085188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a3713606f7b%3A0xc07472064166297a!2sR.%20Soldado%20Jo%C3%A3o%20de%20Oliveira%2C%20421%20-%20Ch%C3%A1cara%20Inglesa%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004139-011!5e0!3m2!1spt-BR!2sbr!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <p style="font-size: 0.8rem; opacity: 0.6;">© 2024 Campanini Beauty. Criado com elegância.</p>
+    </footer>
+
+    <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+    </script>
+</body>
+</html>
